@@ -20,8 +20,9 @@ public class Quary extends JPanel  {
 
 	/**
 	 * Create the panel.
+	 * @param client 
 	 */
-	public Quary() {
+	public Quary(ClientHandler client) {
 setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		

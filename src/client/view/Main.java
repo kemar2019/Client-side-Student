@@ -28,7 +28,7 @@ public class Main extends JFrame {
 	private Quary Quary;
 	private CardLayout view;
 	private JPanel viewpanel;
-	private static ClientHandler client;
+	private  ClientHandler client;
 	
 	/**
 	 * Launch the application.
@@ -38,7 +38,7 @@ public class Main extends JFrame {
 			@Override
 			public void run() {
 				try {
-					Main frame = new Main();
+					Main frame = new Main(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,8 @@ public class Main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Main() {
+	public Main(ClientHandler client) {
+		this.client = client;
 	
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,7 +79,7 @@ public class Main extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				view.show(viewpanel, "Query");
-				System.out.print("flag 2");
+				
 			}
 		});
 		
@@ -89,7 +90,7 @@ public class Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				view.show(viewpanel, "complain");
 				
-				System.out.print("flag 1");
+				
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 255, 255));
@@ -98,8 +99,8 @@ public class Main extends JFrame {
 		menu.add(btnNewButton_1);
 		
 		
-		Complain = new Complain();
-		Quary = new Quary();
+		Complain = new Complain(this.client);
+		Quary = new Quary(this.client);
 		
 		view = new CardLayout();
 		viewpanel = new JPanel(view);

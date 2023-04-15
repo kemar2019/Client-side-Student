@@ -10,7 +10,6 @@ import domain.Credential;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -83,17 +82,14 @@ public class Login extends JFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {	String stu = textField.getText();
-			String pass = textField1.getText();
-			int id = Integer.parseInt(stu);
-			cred.setId(id);
-			cred.setPassword(pass);
-			client.sendAction("Login Student");
-			client.sendCredential(cred);
-			}catch(Exception ex){
-			
-				
-			}
+				String stu = textField.getText();
+				String pass = textField1.getText();
+				int id = Integer.parseInt(stu);
+				cred.setId(id);
+				cred.setPassword(pass);
+				client.sendAction("Login Student");
+				client.sendCredential(cred);
+				client.receiveResponse();
 		
 				
 			}

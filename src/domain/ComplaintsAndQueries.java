@@ -6,7 +6,7 @@ public class ComplaintsAndQueries implements Serializable {
 
 	private String id;
 	private String type;
-	private String studentId;
+	private int studentId;
 	private String category;
 	private String details;
 	private String dateEntered;
@@ -17,7 +17,7 @@ public class ComplaintsAndQueries implements Serializable {
 	public ComplaintsAndQueries() {
 		this.id = "";
 		this.type = "";
-		this.studentId = "";
+		this.studentId = 33424;
 		this.category = "";
 		this.details = "";
 		this.dateEntered = " ";
@@ -25,7 +25,7 @@ public class ComplaintsAndQueries implements Serializable {
 		this.assignedBy = "";
 	}
 
-	public ComplaintsAndQueries(String id, String type, String studentId, String category, String details, String dateEntered,
+	public ComplaintsAndQueries(String id, String type, int studentId, String category, String details, String dateEntered,
 			String advisorId, String assignedBy) {
 		this.id = id;
 		this.type = type;
@@ -65,13 +65,11 @@ public class ComplaintsAndQueries implements Serializable {
 		this.type = type;
 	}
 
-	public String getStudentId() {
+	public int getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
-	}
+	
 
 	public String getCategory() {
 		return category;
@@ -120,6 +118,14 @@ public class ComplaintsAndQueries implements Serializable {
 				+ category + ", details=" + details + ", dateEntered=" + dateEntered + ", advisorId=" + advisorId
 				+ ", assignedBy=" + assignedBy + "]";
 	}
+
+	public void setStudentId(int id2) {
+		this.studentId = id2;
+		
+	}
+
+	
+	
 	
 	
 	

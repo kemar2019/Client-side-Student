@@ -35,7 +35,7 @@ public class Complain extends JPanel {
 	 * @param client2 
 	 */
 	public Complain(ClientHandler client2) {
-		client= new ClientHandler();
+		client = client2;
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		
@@ -90,14 +90,14 @@ public class Complain extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			String	cat = (String) comboBox.getSelectedItem();
 			String d = textField_3.getText();
-			int id = Integer.parseInt(d);
-				cq = new ComplaintsAndQueries();
-				client.sendAction("Add Complaint_Query");
-				cq.setType("complaint");
-				cq.setCategory(cat);
-				cq.setStudentId(id);
-				client.sendComplaint(cq);
-				client.receiveResponse();
+			//int id = Integer.parseInt(d);
+			cq = new ComplaintsAndQueries();
+			client.sendAction("Add Complaint_Query");
+			cq.setType("complaint");
+			cq.setCategory(cat);
+			cq.setStudentId(d);
+			client.sendComplaint(cq);
+			client.receiveResponse();
 				
 			}
 		});

@@ -100,126 +100,118 @@ public class ClientHandler {
 	
 	
 	
-	public void receiveResponse() {
+	public boolean receiveResponse() {
 		try {
 			if (action.equalsIgnoreCase("Login Student")) {
 				Response response = (Response) objIs.readObject();
 	            if (response.getSuccess() && response.getMessage().equals("Authorized")) {
-	            	main = new Main(this);
-	            	Login.setVisible(false);
-	                JOptionPane.showMessageDialog(null, "Login successful!");
-	                main.setVisible(true);
+	            	return true;
+					/*
+					 * main = new Main(this); Login.setVisible(false);
+					 * JOptionPane.showMessageDialog(null, "Login successful!");
+					 * main.setVisible(true);
+					 */
 	            } else {
 	                JOptionPane.showMessageDialog(null, "Login failed!");
 	            }
 			}
 			
-			if (action.equalsIgnoreCase("Add Student")) {
-				
-				
-				
-			}
-			if (action.equalsIgnoreCase("Delete Student")) {
-				
-				
-			}
-			if (action.equalsIgnoreCase("Get Student")){
-				
-				
-				
-			}
-			if (action.equalsIgnoreCase("Update Student")) {
-				
-			}
-			if (action.equalsIgnoreCase("Add Supervisor")) {
-				
-				
-			}
-			 if (action.equalsIgnoreCase("Update Supervisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Delete Supervisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Get Supervisor")) {
-				 
-				 
-			 }
-			 if (action.equalsIgnoreCase("Login Supervisor")) {
-				
-				 
-			 }
-			 if (action.equalsIgnoreCase("Add Advisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Update Advisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Delete Advisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Get Advisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Login Advisor")) {
-				
-				 
-			 }
+			/*
+			 * if (action.equalsIgnoreCase("Add Student")) {
+			 * 
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Delete Student")) {
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Get Student")){
+			 * 
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Update Student")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Add Supervisor")) {
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Update Supervisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Delete Supervisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Get Supervisor")) {
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Login Supervisor")) {
+			 * 
+			 * 
+			 * } if (action.equalsIgnoreCase("Add Advisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Update Advisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Delete Advisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Get Advisor")) {
+			 * 
+			 * } if (action.equalsIgnoreCase("Login Advisor")) {
+			 * 
+			 * 
+			 * }
+			 */
 			 if (action.equalsIgnoreCase("Add Complaint_Query")) {
 				 Response response = (Response) objIs.readObject();
 				 if(response.getSuccess()){
 					 JOptionPane.showMessageDialog(null, "Complaint log successful!");
+					 return true;
 				 }else {
 					 JOptionPane.showMessageDialog(null, "Complaint log Unsuccessful!");
+					 return false;
 				 }
 				 
 			 }
-			 if (action.equalsIgnoreCase("Update Complaint_Query")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Update Resolved Status")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Assign Advisor")) {
-				 
-			 }
-			 if (action.equalsIgnoreCase("Get Complaint_Query")) {
-				 
-			 }if (action.equalsIgnoreCase("Get All Complaint_Query")){
-				 
-			 }if (action.equalsIgnoreCase("Get All Complaints")){
-				 
-			 }if (action.equalsIgnoreCase("Get All Queries")){
-				 
-			 } 
-			 if (action.equalsIgnoreCase("Get All Complaints By Category")){
-				 
-			 }if (action.equalsIgnoreCase("Get All Queries By Category")) {
-				 
-			 }if (action.equalsIgnoreCase("Delete Complaint_Query")) {
-				 
-			 }if (action.equalsIgnoreCase("Get All Complaint_Query For Advisor")) {
-				 
-			 }if (action.equalsIgnoreCase("Get All Complaint_Query For Student")) {
-				 
-			 }if (action.equalsIgnoreCase("Get All Complaints For Advisor")){
-				 
-			 }if (action.equalsIgnoreCase("Get All Queries For Advisor")){
-				 
-			 }
-			 if (action.equalsIgnoreCase("Get All Complaints For Student")) {
-				 
-			 }if (action.equalsIgnoreCase("Get All Queries For Student")) {
-				 
-			 } if (action.equalsIgnoreCase("Add Response")) {
-				 
-			 }if (action.equalsIgnoreCase("Update Response")) {
-				 
-			 }if (action.equalsIgnoreCase("Delete Response")){
-				 
-			 }if (action.equalsIgnoreCase("Get Responses")) {
-				 
-			 }if (action.equalsIgnoreCase("Send Message")) {}
+				/*
+				 * if (action.equalsIgnoreCase("Update Complaint_Query")) {
+				 * 
+				 * } if (action.equalsIgnoreCase("Update Resolved Status")) {
+				 * 
+				 * } if (action.equalsIgnoreCase("Assign Advisor")) {
+				 * 
+				 * } if (action.equalsIgnoreCase("Get Complaint_Query")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Complaint_Query")){
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Complaints")){
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Queries")){
+				 * 
+				 * } if (action.equalsIgnoreCase("Get All Complaints By Category")){
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Queries By Category")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Delete Complaint_Query")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Complaint_Query For Advisor")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Complaint_Query For Student")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Complaints For Advisor")){
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Queries For Advisor")){
+				 * 
+				 * } if (action.equalsIgnoreCase("Get All Complaints For Student")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Get All Queries For Student")) {
+				 * 
+				 * } if (action.equalsIgnoreCase("Add Response")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Update Response")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Delete Response")){
+				 * 
+				 * }if (action.equalsIgnoreCase("Get Responses")) {
+				 * 
+				 * }if (action.equalsIgnoreCase("Send Message")) {}
+				 */
+			 
+			 return false;
 		} catch (ClassCastException ex) {
 			ex.printStackTrace();
 		}catch(ClassNotFoundException ex){
@@ -230,6 +222,7 @@ public class ClientHandler {
 		catch(IOException ex){
 			ex.printStackTrace();
 		}
+		return false;
 	}
 
 	

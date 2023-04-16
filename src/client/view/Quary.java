@@ -23,7 +23,7 @@ public class Quary extends JPanel  {
 	 * @param client 
 	 */
 	public Quary(ClientHandler client) {
-setBorder(new LineBorder(new Color(0, 0, 0)));
+		setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		
 		setBounds(0,0,900,670);

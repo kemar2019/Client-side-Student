@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import domain.Credential;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -89,7 +90,14 @@ public class Login extends JFrame {
 				cred.setPassword(pass);
 				client.sendAction("Login Student");
 				client.sendCredential(cred);
-				client.receiveResponse();
+				var res = client.receiveResponse();
+				
+				if (res) {
+					var main = new Main(client);
+	            	setVisible(false);
+	                JOptionPane.showMessageDialog(null, "Login successful!");
+	                main.setVisible(true);
+				}
 		
 				
 			}

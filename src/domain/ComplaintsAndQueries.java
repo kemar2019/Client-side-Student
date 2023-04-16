@@ -6,26 +6,28 @@ public class ComplaintsAndQueries implements Serializable {
 
 	private String id;
 	private String type;
-	private int studentId;
+	private String studentId;
 	private String category;
 	private String details;
 	private String dateEntered;
 	private String advisorId;
 	private String assignedBy;
+	private Boolean resolved;
 	
 
 	public ComplaintsAndQueries() {
 		this.id = "";
 		this.type = "";
-		this.studentId = 33424;
+		this.studentId = "";
 		this.category = "";
 		this.details = "";
 		this.dateEntered = " ";
 		this.advisorId = "";
 		this.assignedBy = "";
+		this.resolved = false;
 	}
 
-	public ComplaintsAndQueries(String id, String type, int studentId, String category, String details, String dateEntered,
+	public ComplaintsAndQueries(String id, String type, String studentId, String category, String details, String dateEntered,
 			String advisorId, String assignedBy) {
 		this.id = id;
 		this.type = type;
@@ -35,6 +37,7 @@ public class ComplaintsAndQueries implements Serializable {
 		this.dateEntered = dateEntered;
 		this.advisorId = advisorId;
 		this.assignedBy = assignedBy;
+		this.resolved = resolved;
 	}
 
 	public ComplaintsAndQueries(ComplaintsAndQueries complaints) {
@@ -47,6 +50,7 @@ public class ComplaintsAndQueries implements Serializable {
 		this.dateEntered = complaints.dateEntered ;
 		this.advisorId = complaints.advisorId;
 		this.assignedBy = complaints.assignedBy;
+		this.resolved = complaints.resolved;
 	}
 
 	public String getId() {
@@ -65,11 +69,13 @@ public class ComplaintsAndQueries implements Serializable {
 		this.type = type;
 	}
 
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
 
-	
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
 
 	public String getCategory() {
 		return category;
@@ -112,19 +118,22 @@ public class ComplaintsAndQueries implements Serializable {
 		this.assignedBy = assignedBy;
 	}
 
+	
+	public Boolean getResolved() {
+		return resolved;
+	}
+
+	public void setResolved(Boolean resolved) {
+		this.resolved = resolved;
+	}
+
 	@Override
 	public String toString() {
 		return "ComplaintsAndQueries [id=" + id + ", type=" + type + ", studentId=" + studentId + ", category="
 				+ category + ", details=" + details + ", dateEntered=" + dateEntered + ", advisorId=" + advisorId
-				+ ", assignedBy=" + assignedBy + "]";
+				+ ", assignedBy=" + assignedBy + ", resolved=" + resolved + "]";
 	}
 
-	public void setStudentId(int id2) {
-		this.studentId = id2;
-		
-	}
-
-	
 	
 	
 	

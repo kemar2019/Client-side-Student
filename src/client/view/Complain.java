@@ -2,52 +2,42 @@ package client.view;
 
 import javax.swing.JPanel;
 
-import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
-import javax.swing.border.LineBorder;
-//import javax.swing.table.DefaultTableModel;
-//import javax.swing.table.TableModel;
-
 import domain.ComplaintsAndQueries;
 
-import java.awt.Color;
-//import java.util.ArrayList;
-//import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class Complain extends JPanel {
 	private ClientHandler client;
 	private ComplaintsAndQueries cq;
-	private static final long serialVersionUID = 1L;
-	private JTable table;
+	private static Complain currentInstance;
+	//private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_3;
+	private  JScrollPane scrollPane;
 
-	/**
-	 * Create the panel.
-	 * @param client2 
-	 */
+	
+	
 	public Complain(ClientHandler client2) {
+		currentInstance = this;
 		client = client2;
-		setBorder(new LineBorder(new Color(0, 0, 0)));
+		client.sendAction("Get All Complaints For Student");
+		
+		
+		
+		
 		
 		
 		setBounds(0,0,900,670);
 		setLayout(null);
-		
-		//client.sendAction("Get All Complaint_Query For Student");
-		//client.receiveResponse();
-		
-		table = new JTable();
-		table.setBounds(257, 6, 637, 658);
-		add(table);
 		
 		
 		
@@ -90,7 +80,6 @@ public class Complain extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			String	cat = (String) comboBox.getSelectedItem();
 			String d = textField_3.getText();
-			//int id = Integer.parseInt(d);
 			cq = new ComplaintsAndQueries();
 			client.sendAction("Add Complaint_Query");
 			cq.setType("complaint");
@@ -104,8 +93,19 @@ public class Complain extends JPanel {
 		btnNewButton.setToolTipText("start a new complain");
 		btnNewButton.setBounds(6, 447, 117, 29);
 		add(btnNewButton);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(255, 6, 639, 658);
+		add(scrollPane);
 
 	}
+	
+	public static JScrollPane getScrollPane() {
+        if (currentInstance == null) {
+            throw new IllegalStateException("No current instance of Complain");
+        }
+        return currentInstance.scrollPane;
+    }
 	
 	
 	

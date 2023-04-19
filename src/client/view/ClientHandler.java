@@ -20,13 +20,13 @@ import domain.Student;
 public class ClientHandler {
 
 	private Socket connectionSocket;
-	private ObjectOutputStream  objOs;
+	private static ObjectOutputStream  objOs;
 	private ObjectInputStream objIs;
 	private String action;
 	
 	public ClientHandler () {
 		this.createConnection();
-		this.configureStreams();
+		//this.configureStreams();
 		
 	}
 	
@@ -40,6 +40,9 @@ public class ClientHandler {
 	
 	private void configureStreams() {
 		try {
+			if (connectionSocket.isClosed()) {
+				createConnection();
+			}
 			objIs = new ObjectInputStream(connectionSocket.getInputStream());
 			objOs = new ObjectOutputStream(connectionSocket.getOutputStream());
 		}catch(IOException ex) {
@@ -60,6 +63,7 @@ public class ClientHandler {
 	
 	public void sendAction(String action) {
 		this.action = action;
+		configureStreams();
 		try { 
 			objOs.writeObject(action);
 		}catch(IOException e){

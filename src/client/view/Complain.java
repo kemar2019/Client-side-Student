@@ -85,6 +85,7 @@ public class Complain extends JPanel {
 			cq.setType("complaint");
 			cq.setCategory(cat);
 			cq.setStudentId(d);
+			cq.setDetails("Test Details");
 			client.sendComplaint(cq);
 			client.receiveResponse();
 				

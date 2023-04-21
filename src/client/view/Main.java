@@ -84,7 +84,7 @@ public class Main extends JFrame {
 		});
 		
 		JButton btnNewButton = new JButton("Complaint");
-		btnNewButton.setBounds(6, 177, 179, 44);
+		btnNewButton.setBounds(6, 164, 179, 57);
 		menu.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,6 +123,21 @@ public class Main extends JFrame {
 		menuClicked(Complain);
 		getContentPane().add(menu,BorderLayout.CENTER);
 		
+		JButton btnNewButton_2 = new JButton("Live chat");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				client.sendAction("Send Message");
+				client.sendPort(9000);
+				ChatClientGUI chat = new ChatClientGUI("Student","liveChat", 9000);
+				chat.setVisible(true);
+				
+				
+			}
+		});
+		btnNewButton_2.setBounds(6, 296, 179, 49);
+		menu.add(btnNewButton_2);
+		
 	}
 	
 	public void menuClicked(JPanel panel) {
@@ -131,9 +146,4 @@ public class Main extends JFrame {
 		
 		panel.setVisible(true);
 	}
-	
-	
-	
-	
-	
 }

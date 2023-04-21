@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
-
+	public String clientid;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
@@ -91,7 +91,7 @@ public class Login extends JFrame {
 				client.sendAction("Login Student");
 				client.sendCredential(cred);
 				var res = client.receiveResponse();
-				
+				clientid = stu;
 				if (res) {
 					var main = new Main(client);
 	            	setVisible(false);

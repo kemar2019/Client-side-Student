@@ -104,7 +104,51 @@ public class ClientHandler {
 		}
 	}
 	
+	public void sendPort(int i) {
+		try {
+			objOs.writeObject(i);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public List<ComplaintsAndQueries> receiveObject() {
+	    
+	    if (action.equalsIgnoreCase("Get All Complaints For Student")) {
+	    	Object response;
+			try {
+				response = objIs.readObject();  
+				if (response instanceof List<?>) {
+	        List<?> list = (List<?>) response;
+	        if (!list.isEmpty() && list.get(0) instanceof ComplaintsAndQueries) {
+	            List<ComplaintsAndQueries> complaints = (List<ComplaintsAndQueries>) list;
+	            return complaints;
+	        }}
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
+			 
+			   }
+	    
+	    if (action.equalsIgnoreCase("Get All Queries For Student")) {
+	    	Object response;
+			try {
+				response = objIs.readObject();  
+				if (response instanceof List<?>) {
+	        List<?> list = (List<?>) response;
+	        if (!list.isEmpty() && list.get(0) instanceof ComplaintsAndQueries) {
+	            List<ComplaintsAndQueries> complaints = (List<ComplaintsAndQueries>) list;
+	            return complaints;
+	        }}
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
+			 
+			   }
+		return null;
+		
+	 
+	}
 	
 	public boolean receiveResponse() {
 		try {
@@ -118,46 +162,58 @@ public class ClientHandler {
 	            }
 			}
 			
-			/*
-			 * if (action.equalsIgnoreCase("Add Student")) {
-			 * 
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Delete Student")) {
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Get Student")){
-			 * 
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Update Student")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Add Supervisor")) {
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Update Supervisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Delete Supervisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Get Supervisor")) {
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Login Supervisor")) {
-			 * 
-			 * 
-			 * } if (action.equalsIgnoreCase("Add Advisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Update Advisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Delete Advisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Get Advisor")) {
-			 * 
-			 * } if (action.equalsIgnoreCase("Login Advisor")) {
-			 * 
-			 * 
-			 * }
-			 */
+			
+			  if (action.equalsIgnoreCase("Add Student")) {
+			  
+			  
+			  
+			  } if (action.equalsIgnoreCase("Delete Student")) {
+			  
+			  
+			  } if (action.equalsIgnoreCase("Get Student")){
+			  
+			  
+			  
+			  } if (action.equalsIgnoreCase("Update Student")) {
+			  
+			  } if (action.equalsIgnoreCase("Add Supervisor")) {
+			  
+			  
+			  } if (action.equalsIgnoreCase("Update Supervisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Delete Supervisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Get Supervisor")) {
+			  
+			  
+			  } if (action.equalsIgnoreCase("Login Supervisor")) {
+				  Response response = (Response) objIs.readObject();
+		            if (response.getSuccess() && response.getMessage().equals("Authorized")) {
+		            	return true;
+					
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Login failed!");
+		            }
+			  
+			  } if (action.equalsIgnoreCase("Add Advisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Update Advisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Delete Advisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Get Advisor")) {
+			  
+			  } if (action.equalsIgnoreCase("Login Advisor")) {
+			  
+				  Response response = (Response) objIs.readObject();
+		            if (response.getSuccess() && response.getMessage().equals("Authorized")) {
+		            	return true;
+					
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Login failed!");
+		            }
+			  }
+			 
 			 if (action.equalsIgnoreCase("Add Complaint_Query")) {
 				 Response response = (Response) objIs.readObject();
 				 if(response.getSuccess()){
@@ -169,6 +225,7 @@ public class ClientHandler {
 				 }
 				 
 			 }
+				
 				
 				  if (action.equalsIgnoreCase("Update Complaint_Query")) {
 				  
@@ -198,24 +255,9 @@ public class ClientHandler {
 				  
 				  }if (action.equalsIgnoreCase("Get All Queries For Advisor")){
 				  
-				 } 
-				  if (action.equalsIgnoreCase("Get All Complaints For Student")) {
-				  List<ComplaintsAndQueries> readObject = extracted();
-				  List<ComplaintsAndQueries> complaints = readObject ;
-				 
-				  if (complaints == null) {
-						JOptionPane.showMessageDialog(null,"No Record could found ", "find Record Status",JOptionPane.ERROR_MESSAGE);
-					return false;
-					}else {
-						ComplaintsAndQueriesTable tableCreator = new ComplaintsAndQueriesTable(complaints);
-						JTable complaintsTable = tableCreator.createTable();
-						JScrollPane scrollPane = new JScrollPane(complaintsTable);
-						JScrollPane existingScrollPane = Complain.getScrollPane();
-						existingScrollPane.setViewportView(scrollPane);
-					}	
-					  
-				  }
-				  if (action.equalsIgnoreCase("Get All Queries For Student")) {
+				  } if (action.equalsIgnoreCase("Get All Complaints For Student")) {
+				  
+				  } if (action.equalsIgnoreCase("Get All Queries For Student")) {
 				  
 				  } if (action.equalsIgnoreCase("Add Response")) {
 				  
@@ -226,6 +268,7 @@ public class ClientHandler {
 				  }if (action.equalsIgnoreCase("Get Responses")) {
 				  
 				  }if (action.equalsIgnoreCase("Send Message")) {}
+				 
 				 
 			 
 			 return false;
@@ -242,31 +285,9 @@ public class ClientHandler {
 		return false;
 	}
 
-	private List<ComplaintsAndQueries> extracted() throws IOException, ClassNotFoundException {
-		return (List<ComplaintsAndQueries>) objIs.readObject();
-	}
+	
 
-	public class ComplaintsAndQueriesTable {
-
-	    private List<ComplaintsAndQueries> complaints;
-
-	    public ComplaintsAndQueriesTable(List<ComplaintsAndQueries> complaints) {
-	        this.complaints = complaints;
-	    }
-
-	    public JTable createTable() {
-	        String[] columnNames = {"ID", "Type", "StudentID", "Category", "Details", "AdvisoryID", "Assigned By", "Date Entered", "Resolved"};
-	        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
-	        for (ComplaintsAndQueries complaint : complaints) {
-	            Object[] row = {complaint.getId(), complaint.getType(), complaint.getStudentId(), complaint.getCategory(), complaint.getDetails(), complaint.getAdvisorId(), complaint.getAssignedBy(), complaint.getDateEntered(), ""};
-	            model.addRow(row);
-	        }
-
-	        JTable table = new JTable(model);
-	        return table;
-	    }
-	}
+	
 	
 	
 
